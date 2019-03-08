@@ -4,6 +4,8 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+apply from: 'gradle/docker.gradle'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
