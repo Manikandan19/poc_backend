@@ -26,7 +26,7 @@ public class UserService {
 
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	public User saveUserDetails(User user) {
@@ -41,32 +41,27 @@ public class UserService {
 			return userDetails;
 		}
 	}
-	
-	
 
 	public UserDetails checkUserCredentials(UserCredentials credentials) {
 		UserDetails userDetails = detailsRepository.findByUserNameAndPassword(credentials.getUserName(),
 				credentials.getPassword());
 		return userDetails;
 	}
-	
-	public User getUserDetails(UserCredentials userCredentials)
-	{
-		User user=new User();
+
+	public User getUserDetails(UserCredentials userCredentials) {
+		User user = new User();
 		user.setDetails(detailsRepository.findByuserName(userCredentials.getUserName()));
 		user.setAddress(addressRepository.findByAddressID(user.getDetails().getUserId()));
 		return user;
 	}
-	
+
 	public User updateUserDetails(User user) {
-		
-		logger.info("UserID:" + user.getId());
-		
+
 		User userDetails = null;
-			detailsRepository.save(user.getDetails());
-			addressRepository.save(user.getAddress());
-			userDetails = repository.save(user);
-			return userDetails;
+		detailsRepository.save(user.getDetails());
+		addressRepository.save(user.getAddress());
+		userDetails = repository.save(user);
+		return userDetails;
 	}
 
 }

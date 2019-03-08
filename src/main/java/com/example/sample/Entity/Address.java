@@ -95,14 +95,6 @@ public class Address implements Serializable {
 	public void setAddressID(int addressID) {
 		this.addressID = addressID;
 	}
-
-	@Override
-	public String toString() {
-		return "Address [addressID=" + addressID + ", flatNo=" + flatNo + ", street=" + street + ", landMark="
-				+ landMark + ", city=" + city + ", state=" + state + ", country=" + country + ", zipCode=" + zipCode
-				+ "]";
-	}
-	
 	
 
 }

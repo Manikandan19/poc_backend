@@ -29,6 +29,8 @@ public class UserController {
 	@RequestMapping(path = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Boolean saveUserInfo(@RequestBody User user) {
 
+		logger.info("<<<<<<<<<<<<<<<<<<<<<<<<<< Info SaveUserInfo >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
 		User userDetails = userService.saveUserDetails(user);
 
 		if (userDetails != null) {
@@ -40,6 +42,11 @@ public class UserController {
 
 	@RequestMapping(path = "/check", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Boolean checkUserInfo(@RequestBody UserCredentials credentials) {
+		
+
+		logger.info("<<<<<<<<<<<<<<<<<<<<<<<<<< Info CheckUserInfo >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
+		
 		UserDetails userDetails = userService.checkUserCredentials(credentials);
 		if (userDetails == null) {
 			return false;
@@ -53,25 +60,27 @@ public class UserController {
 
 	@RequestMapping(path = "/getUserDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User getUserInfo(@RequestBody UserCredentials userCredentials) {
+
+
+		logger.info("<<<<<<<<<<<<<<<<<<<<<<<<<< Info GetUserInfo >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
+		
 		return userService.getUserDetails(userCredentials);
 	}
 
 	@RequestMapping(path = "/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User updateUserInfo(@RequestBody User user) {
-		
-		logger.info("UserID:"+user.getId());
-		
-		System.out.println(user);
+
+
+		logger.info("<<<<<<<<<<<<<<<<<<<<<<<<<< Info UpdateUserInfo >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		 
 		
 		User userDetails = userService.updateUserDetails(user);
-
-		// if (userDetails != null) {
-		// return true;
-		// }
 		return userDetails;
+
 	}
-    
-    @RequestMapping(path = "/health", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+
+	@RequestMapping(path = "/health", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity getApplicationStatus() {
 		return new ResponseEntity(HttpStatus.OK);
 	}
