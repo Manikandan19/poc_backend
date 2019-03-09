@@ -106,13 +106,6 @@ public class UserDetails implements Serializable {
 		this.dob = dob;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDetails [userId=" + userId + ", userName=" + userName + ", foreName=" + foreName + ", middleName="
-				+ middleName + ", surName=" + surName + ", dob=" + dob + ", gender=" + gender + ", age=" + age
-				+ ", password=" + password + "]";
-	}
-	
 	
 
 }
